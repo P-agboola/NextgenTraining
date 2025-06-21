@@ -1,6 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { UserRoles } from '../enums/enum';
-import { isEnum } from 'class-validator';
 
 @Entity()
 export class User {
@@ -21,4 +27,25 @@ export class User {
 
   @Column({ type: 'enum', enum: UserRoles, default: UserRoles.User })
   role: UserRoles;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
+
+  @Column({
+    type: 'numeric',
+    default: 0,
+    nullable: true,
+    precision: 1,
+    scale: 0,
+  })
+  delete: number;
+
+  @Column({ nullable: true })
+  imageUrl: string;
 }
