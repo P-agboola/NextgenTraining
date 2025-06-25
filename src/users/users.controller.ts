@@ -10,14 +10,20 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { IResponse, LoginDto } from '../model/interface';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
+  create(@Body() createUserDto: CreateUserDto): Promise<IResponse> {
     return this.usersService.create(createUserDto);
+  }
+
+  @Post('login')
+  async login(@Body() loginDto: LoginDto): Promise<IResponse> {
+    return this.usersService.login(loginDto);
   }
 
   @Get()

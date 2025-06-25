@@ -12,3 +12,8 @@ export interface UserResponse {
   email: string;
   role: 'user' | 'admin';
 }
+
+export interface LoginDto {
+  email: string;
+  password: string;
+}

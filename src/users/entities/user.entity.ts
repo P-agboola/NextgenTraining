@@ -48,4 +48,6 @@ export class User {
 
   @Column({ nullable: true })
   imageUrl: string;
+
+  ImageUrl: string;
 }

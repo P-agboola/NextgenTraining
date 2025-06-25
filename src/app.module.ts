@@ -11,7 +11,6 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: './env/development.env',
-      ignoreEnvFile: process.env.NODE_ENV === 'production',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
